@@ -30,7 +30,7 @@ public class EventDetailsActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         eventDetailsView.getSettings().setLoadsImagesAutomatically(true);
-        eventDetailsView.loadData(intent.getStringExtra(HTML_LINK), "text/html", "UTF-8");
+        eventDetailsView.loadData(intent.getStringExtra(HTML_LINK), MIME_TYPE, ENCODING);
     }
 
 

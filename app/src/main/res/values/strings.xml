@@ -1,4 +1,41 @@
 <resources>
     <string name="app_name">Eventplus</string>
+
+    //main activity
+    <string name="network_unavailable">network is unavailable</string>
+    <string name="exception">Exception caught:</string>
+
+
+    //timezones
+    <string name="gmt">GMT</string>
+    <string name="utc">utc</string>
+
+    //date formats
+    <string name="date_format1">yyyy-MM-dd\'T\'HH:mm:ss\'Z\'</string>
+
+    //json keys
+    <string name="json_key_event_name">name</string>
+    <string name="json_key_start_time">start</string>
+    <string name="json_key_event_description">description</string>
+    <string name="json_key_logo_url">url</string>
+    <string name="json_key_event_name_as_text">text</string>
+    <string name="json_key_event_html_link">html</string>
+    <string name="json_key_logo">logo</string>
+    <string name="json_key_event_list">events</string>
+
+    //error dialog
+    <string name="error_dialog_name">error_dialog</string>
+    <string name="error_dialog_title">Oops Error</string>
+    <string name="error_dialog_message">Error Occured</string>
+
+    //loading dialog
+    <string name="loading_dialog_message">Downloading List of Events</string>
+    <string name="loading_dialog_title">Please Wait</string>
+    <string name="api_url">https://www.eventbriteapi.com/v3/events/search/?token=VBUSKKCQ2VTXKPOP34PX</string>
+
+    //button titles
+    <string name="ok_button_title">OK</string>
+
+    //event_list_item
     <string name="event_name">Event Name</string>
 </resources>

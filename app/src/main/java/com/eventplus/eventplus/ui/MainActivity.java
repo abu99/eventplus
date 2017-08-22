@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.eventplus.eventplus.R;
@@ -58,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void getEvent(){
 
-        String eventURL = "https://www.eventbriteapi.com/v3/events/search/?token=VBUSKKCQ2VTXKPOP34PX";
+        String eventURL = getString(R.string.api_url);
 
         if(isNetworkAvailable()){
             OkHttpClient client = new OkHttpClient();
@@ -93,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
                             alertUserAboutError();
                         }
                     } catch (IOException e) {
-                        Log.e(TAG, "Exception caught: ", e);
+                        Log.e(TAG, getString(R.string.exception), e);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -102,14 +101,14 @@ public class MainActivity extends AppCompatActivity {
 
 
         }else{
-            Toast.makeText(this, "network is unavailable", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.network_unavailable, Toast.LENGTH_LONG).show();
         }
     }
 
     private Event[] getEventList(String jsonData) throws JSONException {
 
         JSONObject eventBriteData = new JSONObject(jsonData);
-        JSONArray eventArray = eventBriteData.getJSONArray("events");
+        JSONArray eventArray = eventBriteData.getJSONArray(getString(R.string.json_key_event_list));
 
 
 
@@ -119,26 +118,26 @@ public class MainActivity extends AppCompatActivity {
 
             JSONObject eventData = eventArray.getJSONObject(i);
 
-            JSONObject eventName = eventData.getJSONObject("name");
-            JSONObject eventStartTime = eventData.getJSONObject("start");
-            JSONObject eventDescription = eventData.getJSONObject("description");
+            JSONObject eventName = eventData.getJSONObject(getString(R.string.json_key_event_name));
+            JSONObject eventStartTime = eventData.getJSONObject(getString(R.string.json_key_start_time));
+            JSONObject eventDescription = eventData.getJSONObject(getString(R.string.json_key_event_description));
 
-            JSONObject eventLogo = eventData.getJSONObject("logo");
+            JSONObject eventLogo = eventData.getJSONObject(getString(R.string.json_key_logo));
 
             Event event = new Event();
 
 
 
-            event.setLogo(eventLogo.getString("url"));
-            event.setName(eventName.getString("text"));
-            event.setHtmlLink(eventDescription.getString("html"));
+            event.setLogo(eventLogo.getString(getString(R.string.json_key_logo_url)));
+            event.setName(eventName.getString(getString(R.string.json_key_event_name_as_text)));
+            event.setHtmlLink(eventDescription.getString(getString(R.string.json_key_event_html_link)));
 
-            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-            df.setTimeZone(TimeZone.getTimeZone("GMT"));
+            SimpleDateFormat df = new SimpleDateFormat(getString(R.string.date_format1));
+            df.setTimeZone(TimeZone.getTimeZone(getString(R.string.gmt)));
 
             Date startTime = new Date();
             try {
-                startTime = df.parse(eventStartTime.getString("utc"));
+                startTime = df.parse(eventStartTime.getString(getString(R.string.utc)));
             } catch (ParseException e) {
                 e.printStackTrace();
             }
@@ -154,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void alertUserAboutError() {
         AlertDialogFragment alertDialogFragment = new AlertDialogFragment();
-        alertDialogFragment.show(getFragmentManager(), "error_dialog");
+        alertDialogFragment.show(getFragmentManager(), getString(R.string.error_dialog_name));
     }
 
     private boolean isNetworkAvailable() {
@@ -186,8 +185,8 @@ public class MainActivity extends AppCompatActivity {
     public void showLoading(){
         if(progressDialog == null) {
             progressDialog = new ProgressDialog(this);
-            progressDialog.setTitle("Please Wait");
-            progressDialog.setMessage("Downloading List of Events");
+            progressDialog.setTitle(getString(R.string.loading_dialog_title));
+            progressDialog.setMessage(getString(R.string.loading_dialog_message));
         }
         progressDialog.show();
     }
