@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Eventplus</string>
+    <string name="event_name">Event Name</string>
+</resources>
