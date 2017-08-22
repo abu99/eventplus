@@ -1,6 +1,6 @@
 # Eventplus #
 
-This is an app that displays list of events based for a particular api url
+App that fetches list of events from an api.
 
 ### Description
 * Version 1.
