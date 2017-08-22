@@ -16,6 +16,9 @@ public class EventDetailsActivity extends AppCompatActivity {
 
     private WebView eventDetailsView;
     private static final String HTML_LINK = "HTML LINK";
+    private static final String MIME_TYPE = "text/html";
+    private static final String ENCODING = "UTF-8";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +30,7 @@ public class EventDetailsActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         eventDetailsView.getSettings().setLoadsImagesAutomatically(true);
-        eventDetailsView.loadDataWithBaseURL(null, intent.getStringExtra(HTML_LINK), "text/html", "UTF-8", null);
+        eventDetailsView.loadData(intent.getStringExtra(HTML_LINK), "text/html", "UTF-8");
     }
 
 

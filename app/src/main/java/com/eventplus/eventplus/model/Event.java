@@ -12,6 +12,7 @@ public class Event {
     private String name;
     private Date startTime;
     private String htmlLink;
+    private static final String DATE_FORMAT = "MMM d, yyyy h:mm a";
 
     public String getLogo() {
         return logo;
@@ -30,8 +31,7 @@ public class Event {
     }
 
     public String getStartTime() {
-        SimpleDateFormat sdf = new SimpleDateFormat("MMM d, yyyy h:mm a");
-
+        SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
         return sdf.format(startTime);
     }
 
