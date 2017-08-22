@@ -21,9 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.EventDetailsActivity"
-                  android:configChanges="orientation|screenSize"
-                  android:parentActivityName=".ui.MainActivity"
-            >
+                  android:configChanges="orientation|screenSize">
         </activity>
     </application>
 
